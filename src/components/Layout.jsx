@@ -45,10 +45,12 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    //get token from Cookies
-    let userToken = Cookies.get("token");
+    //get token from Cookies --
+    //DESABILITADO PARA TESTES --
 
-    //fetch user data
+    //let userToken = Cookies.get("token");
+
+    //fetch user data --
     const fetchUserData = async () => {
       try {
         const user = await fetchUserDetails(userToken);
@@ -64,20 +66,31 @@ const HomePage = () => {
       }
     };
 
-    fetchUserData();
+    //fetchUserData();
+
+    // USUÁRIO FAKE PARA DESENVOLVIMENTO -- 
+      setUserDetails({
+        id: "123",
+        firstName: "Dev",
+        lastName: "Tester",
+        email: "dev@test.com",
+        userCategory: "Motorist",
+    });
   }, []);
 
-  let userToken = Cookies.get("token");
+  //DESABILITADO PARA TESTES --
 
-  //if user is logged in
-  if (userToken === undefined) {
-    return <Navigate to="/login" />;
-  }
+  // let userToken = Cookies.get("token");
 
-  //if no user
-  if (Object.keys(userDetails).length === 0) {
-    return <Loading />;
-  }
+  // //if user is logged in
+  // if (userToken === undefined) {
+  //   return <Navigate to="/login" />;
+  // }
+
+  // //if no user
+  // if (Object.keys(userDetails).length === 0) {
+  //   return <Loading />;
+  // }
 
   return (
     <div className="relative mt-20 md:mt-0">
