@@ -15,7 +15,7 @@ const VehicleCreate = () => {
     e.preventDefault();
 
     await addVehicle(form);
-    navigate("/home/vehicles");
+    navigate("/vehicle-list");
   };
 
   return (
